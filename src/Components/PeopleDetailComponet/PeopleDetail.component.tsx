@@ -52,12 +52,16 @@ query GetPerson {
   }`
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const { loading, data } = useQuery<Data>(QUERY_GET_PERSON)
-
   return (
     <>
       <BackdropCustom open={loading} />
       {data !== undefined && (
-        <Dialog open={props.open} fullScreen={fullScreen} onClose={props.handleClose}>
+        <Dialog
+          open={props.open}
+          fullScreen={fullScreen}
+          onClose={props.handleClose}
+          PaperProps={{ style: { background: theme.palette.background.paper } }}
+        >
           <PeopleDetailHeader handleClose={props.handleClose} name={data?.person.name || ''} />
           <Divider />
           <Grid className={classes.dialogContent}>
@@ -68,6 +72,7 @@ query GetPerson {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
+              className={classes.fields}
             >
               <Grid xs={12} md={4} item={true}>
                 <CardMedia component="img" height="280" image={props.urlImage} alt="green iguana" />
@@ -86,10 +91,10 @@ query GetPerson {
                   <ListItemText primary={data?.person.hairColor} secondary="Hair Color" />
                 </Grid>
                 <Grid xs={6}>
-                  <ListItemText primary={data?.person.height} secondary="Height" />
+                  <ListItemText primary={`${data?.person.height} cm`} secondary="Height" />
                 </Grid>
                 <Grid xs={6}>
-                  <ListItemText primary={data?.person.mass} secondary="Mass" />
+                  <ListItemText primary={`${data?.person.mass} kg`} secondary="Mass" />
                 </Grid>
                 <Grid xs={6}>
                   <ListItemText primary={data?.person.skinColor} secondary="Skin Color" />
@@ -102,11 +107,7 @@ query GetPerson {
           </Grid>
           <Divider />
           <DialogContent className={classes.dialogContent}>
-            <List
-              sx={{ width: '100%', bgcolor: 'background.paper' }}
-              dense={true}
-              subheader={'Films:'}
-            >
+            <List sx={{ width: '100%' }} dense={true} subheader={'Films:'}>
               {data.person.filmConnection.films.map((film, index) => {
                 return (
                   <>
@@ -121,9 +122,9 @@ query GetPerson {
                               color="text.primary"
                             >
                               <Chip
-                                label={`${film.title} - episode ${film.episodeID} - directed by:${film.director}`}
+                                label={`${film.title} - episode ${film.episodeID} - directed by: ${film.director}`}
                                 size="small"
-                                color="success"
+                                color="primary"
                                 variant="outlined"
                               />
                             </Typography>
@@ -138,7 +139,7 @@ query GetPerson {
                                   key={index}
                                   label={planet.name}
                                   size="small"
-                                  color="primary"
+                                  color="secondary"
                                   variant="outlined"
                                   className={classes.chip}
                                 />
@@ -167,8 +168,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.up('md')]: {
       width: theme.spacing(65),
     },
+    background: theme.palette.background.default,
     paddingBottom: theme.spacing(0.1),
     paddingTop: theme.spacing(0.1),
+  },
+  fields: {
+    background: theme.palette.background.paper,
   },
   itemList: {
     padding: theme.spacing(0),
@@ -177,4 +182,3 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(0.2),
   },
 }))
-

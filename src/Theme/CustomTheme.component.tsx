@@ -28,8 +28,14 @@ let theme = createTheme({
       primary: '#353535',
       disabled: '#99999',
     },
+    primary: {
+      main: '#1F2833',
+    },
+    secondary: {
+      main: '#C5C6C7',
+    },
     background: {
-      paper: '#ffff',
+      paper: '#66FCF1',
       default: '#ffff',
     },
   },

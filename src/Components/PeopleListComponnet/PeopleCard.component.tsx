@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
+import { Card, CardActionArea, CardContent, CardMedia, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,12 +10,13 @@ interface IPeopleCardProps {
 
 const PeopleCard: React.FC<IPeopleCardProps> = (props) => {
   const navigate = useNavigate()
+  const theme = useTheme()
   const handlingClick = () => {
     navigate(`/people/${props.id}`)
   }
   return (
     <Card
-      sx={{ maxWidth: 300, marginX: 1.5, marginTop: 3, background: '#66FCF1' }}
+      sx={{ maxWidth: 300, marginX: 1.5, marginTop: 3, background: theme.palette.background.paper }}
       onClick={handlingClick}
     >
       <CardActionArea>

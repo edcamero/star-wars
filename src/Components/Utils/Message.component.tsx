@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import makeStyles from '@mui/styles/makeStyles'
 import { Theme } from '@mui/system/createTheme'
 
-const messageStyles = makeStyles((theme:Theme) => ({
+const messageStyles = makeStyles((theme: Theme) => ({
   notification: {
     marginBottom: theme.spacing(2),
   },
@@ -13,7 +13,7 @@ interface IMessagesProps {
   open: boolean
   setOpen(open: boolean): void
   message: string
-  severity: AlertColor|undefined
+  severity: AlertColor | undefined
   title: string
 }
 

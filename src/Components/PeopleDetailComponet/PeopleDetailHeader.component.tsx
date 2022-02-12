@@ -11,12 +11,10 @@ interface IPeopleDetailHeaderProps {
 const PeopleDetailHeader: React.FC<IPeopleDetailHeaderProps> = (props) => {
   const classes = useStyles()
   return (
-    <DialogTitle>
+    <DialogTitle className={classes.root}>
       <Grid container={true} direction="row" justifyContent="space-between">
         <Grid item={true} xs={11} container={true} direction="column">
-          <Typography variant="h5" data-testid="test-name-professional">
-            {props.name}
-          </Typography>
+          <Typography variant="h5">{props.name}</Typography>
         </Grid>
         <Grid
           item={true}
@@ -32,7 +30,6 @@ const PeopleDetailHeader: React.FC<IPeopleDetailHeaderProps> = (props) => {
             component="span"
             className={classes.iconButtonClosed}
             onClick={props.handleClose}
-            data-testid="test-close-schedule"
           >
             <CloseIcon className={classes.iconClosed} />
           </IconButton>
@@ -45,6 +42,9 @@ const PeopleDetailHeader: React.FC<IPeopleDetailHeaderProps> = (props) => {
 export default PeopleDetailHeader
 
 const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    background: theme.palette.background.default,
+  },
   icon: {
     fontSize: theme.spacing(1.5),
     marginBottom: theme.spacing(-0.2),
