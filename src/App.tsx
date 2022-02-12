@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import Home from './Components/HomeComponent/Home.component'
 import PeopleList from './Components/PeopleListComponnet/PeopleList.component'
 
@@ -9,7 +9,7 @@ import { client } from './ApolloClient/client'
 
 function App() {
   return (
-    <BrowserRouter basename={'/'}>
+    <HashRouter basename={'/'}>
       <ApolloProvider client={client}>
         <div className="App">
           <Routes>
@@ -19,7 +19,7 @@ function App() {
           </Routes>
         </div>
       </ApolloProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
