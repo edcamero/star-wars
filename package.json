@@ -1,7 +1,7 @@
 {
   "name": "star-wars",
-  "homepage":"https://edcamero.github.io/star-wars/",
   "version": "0.1.0",
+  "homepage": "https://edcamero.github.io/star-wars/",
   "private": false,
   "dependencies": {
     "@apollo/client": "^3.5.8",

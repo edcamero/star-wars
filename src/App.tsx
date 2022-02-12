@@ -9,7 +9,7 @@ import { client } from './ApolloClient/client'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ApolloProvider client={client}>
         <div className="App">
           <Routes>
