@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Components/HomeComponent/Home.component'
 import PeopleList from './Components/PeopleListComponnet/PeopleList.component'
-import PeopleDetail from './Components/PeopleDetailComponet/PeopleDetail.component'
 
 import './App.css'
 import { ApolloProvider } from '@apollo/client'
