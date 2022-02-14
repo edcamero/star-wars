@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Collapse, AlertColor, IconButton } from '@mui/material'
+import { Alert, AlertTitle, Collapse, AlertColor, IconButton, Snackbar } from '@mui/material'
 import React from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import makeStyles from '@mui/styles/makeStyles'
@@ -19,9 +19,16 @@ interface IMessagesProps {
 
 const Messages: React.FC<IMessagesProps> = (props) => {
   const classes = messageStyles()
+  const handleClose = () => {
+    props.setOpen(false)
+  }
   return (
     <React.Fragment>
-      <Collapse in={props.open}>
+      <Snackbar
+        open={props.open}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
         <Alert
           className={classes.notification}
           action={
@@ -29,9 +36,7 @@ const Messages: React.FC<IMessagesProps> = (props) => {
               aria-label="close"
               color="inherit"
               size="small"
-              onClick={() => {
-                props.setOpen(false)
-              }}
+              onClick={handleClose}
               data-testid="button-close-message"
             >
               <CloseIcon fontSize="inherit" />
@@ -43,7 +48,7 @@ const Messages: React.FC<IMessagesProps> = (props) => {
           <AlertTitle>{props.title}</AlertTitle>
           {props.message}
         </Alert>
-      </Collapse>
+      </Snackbar>
     </React.Fragment>
   )
 }
