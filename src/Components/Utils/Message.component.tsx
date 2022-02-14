@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Collapse, AlertColor, IconButton, Snackbar } from '@mui/material'
+import { Alert, AlertTitle, AlertColor, IconButton, Snackbar } from '@mui/material'
 import React from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import makeStyles from '@mui/styles/makeStyles'
