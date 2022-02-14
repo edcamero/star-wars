@@ -19,12 +19,16 @@ interface IMessagesProps {
 
 const Messages: React.FC<IMessagesProps> = (props) => {
   const classes = messageStyles()
-  const handleClose=()=>{
+  const handleClose = () => {
     props.setOpen(false)
   }
   return (
     <React.Fragment>
-      <Snackbar open={props.open}  onClose={handleClose}  anchorOrigin={{vertical: 'top', horizontal: 'center'}}>
+      <Snackbar
+        open={props.open}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
         <Alert
           className={classes.notification}
           action={
